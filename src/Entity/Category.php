@@ -33,13 +33,13 @@ class Category
     /**
      * @var Collection<int, Presse>
      */
-    #[ORM\ManyToMany(targetEntity: Presse::class, mappedBy: 'category')]
+    #[ORM\ManyToMany(targetEntity: Presse::class, inversedBy: 'categories')]
     private Collection $presses;
 
     /**
      * @var Collection<int, Podcast>
      */
-    #[ORM\ManyToMany(targetEntity: Podcast::class, mappedBy: 'category')]
+    #[ORM\ManyToMany(targetEntity: Podcast::class, inversedBy: 'categories')]
     private Collection $podcasts;
 
     public function __construct()
@@ -126,7 +126,6 @@ class Category
     {
         if (!$this->presses->contains($press)) {
             $this->presses->add($press);
-            $press->addCategory($this);
         }
 
         return $this;
@@ -134,9 +133,7 @@ class Category
 
     public function removePress(Presse $press): static
     {
-        if ($this->presses->removeElement($press)) {
-            $press->removeCategory($this);
-        }
+        $this->presses->removeElement($press);
 
         return $this;
     }
@@ -153,7 +150,6 @@ class Category
     {
         if (!$this->podcasts->contains($podcast)) {
             $this->podcasts->add($podcast);
-            $podcast->addCategory($this);
         }
 
         return $this;
@@ -161,9 +157,7 @@ class Category
 
     public function removePodcast(Podcast $podcast): static
     {
-        if ($this->podcasts->removeElement($podcast)) {
-            $podcast->removeCategory($this);
-        }
+        $this->podcasts->removeElement($podcast);
 
         return $this;
     }

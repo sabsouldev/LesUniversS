@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Model\TimestampedInterface;
 use App\Repository\PresseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -9,7 +10,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PresseRepository::class)]
-class Presse
+class Presse implements TimestampedInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -26,7 +27,7 @@ class Presse
     private ?string $slug = null;
 
     #[ORM\Column(length: 100, nullable: true)]
-    private ?string $featurdText = null;
+    private ?string $featuredText = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $lien_fichier = null;
@@ -40,19 +41,23 @@ class Presse
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
 
-    /**
-     * @var Collection<int, category>
-     */
-    #[ORM\ManyToMany(targetEntity: category::class, inversedBy: 'presses')]
-    private Collection $category;
+   
 
     #[ORM\ManyToOne]
     private ?Media $featuredImage = null;
 
+    /**
+     * @var Collection<int, Category>
+     */
+    #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'presses')]
+    private Collection $categories;
+
     public function __construct()
     {
-        $this->category = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
+
+  
 
     public function getId(): ?int
     {
@@ -95,14 +100,14 @@ class Presse
         return $this;
     }
 
-    public function getFeaturdText(): ?string
+    public function getFeaturedText(): ?string
     {
-        return $this->featurdText;
+        return $this->featuredText;
     }
 
-    public function setFeaturdText(?string $featurdText): static
+    public function setFeaturedText(?string $featuredText): static
     {
-        $this->featurdText = $featurdText;
+        $this->featuredText = $featuredText;
 
         return $this;
     }
@@ -155,29 +160,7 @@ class Presse
         return $this;
     }
 
-    /**
-     * @return Collection<int, category>
-     */
-    public function getCategory(): Collection
-    {
-        return $this->category;
-    }
-
-    public function addCategory(category $category): static
-    {
-        if (!$this->category->contains($category)) {
-            $this->category->add($category);
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(category $category): static
-    {
-        $this->category->removeElement($category);
-
-        return $this;
-    }
+    
 
     public function getFeaturedImage(): ?Media
     {
@@ -187,6 +170,33 @@ class Presse
     public function setFeaturedImage(?Media $featuredImage): static
     {
         $this->featuredImage = $featuredImage;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): static
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+            $category->addPress($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): static
+    {
+        if ($this->categories->removeElement($category)) {
+            $category->removePress($this);
+        }
 
         return $this;
     }

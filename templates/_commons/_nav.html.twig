@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #fa7824;">
+
+    <div class="container-fluid justify-content-center mb-5 ">
+      <div class="row justify-content-center">
+        <a class="navbar-brand" href="{{ path('home') }}"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class=" display-6 d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <ul class="navbar-nav ms-auto ">
+              <li class="nav-item">
+                <a class="nav-link active px-4 me-sm-3 fw-bold" style="background-color: #fa7824; color:#FFDF57;" aria-current="page" href="{{ path('home') }}">Home</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link px-4 me-sm-3 fw-bold" style="background-color: #fa7824; color:#FFDF57;" href="{{ path('mook.index') }}">Mook</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link px-4 me-sm-3 fw-bold" style="background-color: #fa7824; color:#FFDF57;" href="{{ path('activity.index') }}">Activités</a>
+              </li>
+             <li class="nav-item ">
+                <a class="nav-link px-4 me-sm-3 fw-bold" style="background-color: #fa7824; color:#FFDF57;" href="{{ path('presse.show') }}">Presse</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link px-4 me-sm-3 fw-bold " style="background-color: #fa7824; color:#FFDF57;" href="{{ path('projet.show') }}">Projets</a>
+              </li>
+              {# <li class="nav-item">
+                <a class="nav-link fw-bolder " style="background-color: #fa7824; color:#FFDF57;" href="{{ path('contact.index') }}">Contact</a>
+              </li>#}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle px-4 me-sm-3 fw-bold" style="background-color: #fa7824; color:#FFDF57;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ressources</a>
+                <ul class="dropdown-menu" style="background-color: #fa7824; color:#FFDF57;">
+                  <li><a class="dropdown-item px-4 me-sm-3  fs-4 fw-bold" style="background-color: #fa7824; color:#FFDF57;" href="{{ path('podcast.show') }}">Podcast</a></li>
+                  <li><a class="dropdown-item px-4 me-sm-3 fs-4 fw-bold" style="background-color: #fa7824; color:#FFDF57;" href="{{ path('article.show') }}">Articles</a></li>
+                  <li><a class="dropdown-item px-4 me-sm-3 fs-4 fw-bold" style="background-color: #fa7824; color:#FFDF57;" href="{{ path('partenaires.show') }}">Nos Partenaires</a></li>
+                </ul>
+              </li> 
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>

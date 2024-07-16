@@ -1,20 +1,89 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/coffl/Documents/Projets/LesUniversS/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>C:/Users/coffl/Documents/Projets/LesUniversS/templates/home/index.html.twig</code></li>
-    </ul>
+<div class="container-xxl px-5  my-5">
+    <div class="border rounded border-3  px-5 py-5 bg-light" >
+        <div class="d-flex justify-content-center ">       
+            <h1 class="text-uppercase fw-bolder text-decoration-underline mt-3"style="color:#1350a2;">Qui sommes nous ?</h1>
+        </div>       
+        <div class="fs-5 d-flex justify-content-center mt-5 fw-normal">
+            <p>Nous sommes un GEM (Groupe d'Entraide Mutuelle), association « Les Univers Singuliers » . C'est un lieu de rencontre ouvert aux adultes concernées par les Troubles du Spectre de l'Autisme.
+    C'est un espace ressources, qui favorise les échanges, l'entraide, l’information, l'organisation d'activités culturelles et de loisirs ainsi que la construction et la mise en œuvre de projets de sensibilisation à l'autisme.
+    On peut se retrouver dans une ambiance accueillante autour d'un café, d'un repas, d'une activité, travailler sur ses projets ou simplement se poser et se détendre.
+    Deux animateurs à temps complet collaborent avec nous à la dynamique et la gestion global de notre projet associatif.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-8 mx-auto">
+            <div id="carouselExampleInterval" class="carousel slide mt-5" data-bs-ride="carousel">
+                
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{asset('assets/images/home/façade.jpeg')}}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Bienvenu à l'Association "Les Univers Singuliers"</h5>
+                            <p>" La façade "</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{asset('assets/images/home/travail.jpeg')}}" class="d-block w-100" alt="...">
+                         <div class="carousel-caption d-none d-md-block">
+                            <p>" L'espace travail "</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{asset('assets/images/home/cuisine.jpeg')}}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>" La cuisine "</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{asset('assets/images/home/café.jpeg')}}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>" L'espace café "</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{asset('assets/images/home/salon.jpeg')}}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>" Le salon "</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{asset('assets/images/home/salleDetente.jpg')}}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>" L'espace détente "</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{asset('assets/images/home/salleVideo.jpg')}}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>" L'espace jeux vidéos "</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{asset('assets/images/home/salleActivité.jpg')}}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>" L'espace créativité "</p>
+                        </div>
+                    </div>    
+                </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>        
 </div>
 {% endblock %}
+
